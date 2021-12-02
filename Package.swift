@@ -20,20 +20,19 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Cabbage",
-            dependencies: [],
-            linkerSettings: [
-                .linkedFramework(name: "AVFoundation", 
-            ]
-        ),
-            linkerSettings: [
-                .linkedFramework(
-                    "AVFoundation",
-                    .when(platforms: [.iOS, .macOS])
-                ),
-                .linkedFramework(
-                    "Foundation",
-                    .when(platforms: [.iOS, .macOS])
-                )
-            ]
+			dependencies: [],
+			path: "Cabbage/Sources",
+			resources: [.copy("Resource/black_empty.mp4")],
+			linkerSettings: [
+				.linkedFramework(
+					"AVFoundation",
+					.when(platforms: [.iOS, .macOS])
+				),
+				.linkedFramework(
+					"Foundation",
+					.when(platforms: [.iOS, .macOS])
+				)
+			]
+        )
     ]
 )

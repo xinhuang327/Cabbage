@@ -119,6 +119,12 @@ open class Resource: NSObject, NSCopying, ResourceTrackInfoProvider {
         if let videoURL = bundle.url(forResource: "black_empty", withExtension: "mp4") {
             return AVAsset(url: videoURL)
         }
+		if let bundleURL = bundle.resourceURL?.appendingPathComponent("Cabbage_Cabbage.bundle") {
+			let resourceBundle = Bundle.init(url: bundleURL)
+			if let videoURL = resourceBundle?.url(forResource: "black_empty", withExtension: "mp4") {
+				return AVAsset(url: videoURL)
+			}
+		}
         if let bundleURL = bundle.resourceURL?.appendingPathComponent("Cabbage.bundle") {
             let resourceBundle = Bundle.init(url: bundleURL)
             if let videoURL = resourceBundle?.url(forResource: "black_empty", withExtension: "mp4") {
